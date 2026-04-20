@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: sample-component
+  description: A sample component
+spec:
+  type: website
+  lifecycle: experimental
+  owner: web@example.com
