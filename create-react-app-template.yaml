@@ -40,24 +40,16 @@ spec:
             allowedHosts:
               - github.com
   steps:
-    - id: create-catalog
-      name: Create catalog-info.yaml
-      action: fs:write
+    - id: fetch-template
+      name: Fetch Skeleton
+      action: fetch:template
       input:
-        files:
-          - path: catalog-info.yaml
-            content: |
-              apiVersion: backstage.io/v1alpha1
-              kind: Component
-              metadata:
-                name: ${{ parameters.component_id }}
-                description: ${{ parameters.description }}
-                annotations:
-                  github.com/project-slug: ${{ parameters.repoUrl | parseRepoUrl.owner }}/${{ parameters.repoUrl | parseRepoUrl.repo }}
-              spec:
-                type: website
-                lifecycle: experimental
-                owner: ${{ parameters.owner }}
+        url: ./skeleton
+        values:
+          component_id: ${{ parameters.component_id }}
+          description: ${{ parameters.description }}
+          owner: ${{ parameters.owner }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
 
     - id: publish
       name: Publish to GitHub
