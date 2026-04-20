@@ -40,17 +40,6 @@ spec:
             allowedHosts:
               - github.com
   steps:
-    - id: fetch-template
-      name: Fetch Skeleton
-      action: fetch:template
-      input:
-        url: ./skeleton
-        values:
-          component_id: ${{ parameters.component_id }}
-          description: ${{ parameters.description }}
-          owner: ${{ parameters.owner }}
-          destination: ${{ parameters.repoUrl | parseRepoUrl }}
-
     - id: publish
       name: Publish to GitHub
       action: publish:github
