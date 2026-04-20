@@ -1,9 +1,11 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: sample-component
-  description: A sample component
+  name: rhdh-templates
+  description: Templates for Red Hat Developer Hub
+  annotations:
+    github.com/project-slug: kdilshan-fdo/rhdh-templates
 spec:
-  type: website
+  type: template
   lifecycle: experimental
   owner: web@example.com
